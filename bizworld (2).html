@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#102a43">
+<title>BizWorld — Get discovered. Grow together.</title>
+<style>
+:root{--navy:#102a43;--blue:#2563eb;--sky:#eaf2ff;--ink:#172b4d;--muted:#62748a;--line:#e5ebf2;--bg:#f7f9fc;--white:#fff;--green:#0f9d72}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+a{color:inherit;text-decoration:none}.wrap{width:min(1120px,92%);margin:auto}
+header{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:850;font-size:1.3rem;letter-spacing:-.6px;color:var(--navy)}
+.mark{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,#2563eb,#0f9d72);display:grid;place-items:center;color:white;font-weight:900}
+.navlinks{display:flex;align-items:center;gap:24px;color:#53657a;font-size:.94rem}
+.btn{border:0;border-radius:10px;padding:12px 17px;font-weight:750;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.btn-primary{background:var(--blue);color:white}.btn-outline{background:white;color:var(--navy);border:1px solid var(--line)}
+.hero{background:linear-gradient(120deg,#102a43 0%,#173f67 65%,#1b5b70 100%);color:white;padding:76px 0 68px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.eyebrow{display:inline-block;background:#ffffff1c;border:1px solid #ffffff35;border-radius:99px;padding:7px 12px;font-size:.82rem;color:#dbeafe;font-weight:700}
+h1{font-size:clamp(2.5rem,6vw,4.5rem);line-height:1.04;letter-spacing:-2.4px;margin:20px 0}
+.hero p{font-size:1.1rem;color:#d5e3f2;max-width:570px;margin:0 0 27px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.hero .btn-outline{background:#ffffff12;color:white;border-color:#ffffff50}
+.hero-note{font-size:.82rem;color:#b9cde0;margin-top:16px}
+.preview{background:white;border-radius:20px;padding:18px;color:var(--ink);box-shadow:0 25px 70px #07192e55;transform:rotate(1.5deg)}
+.preview-top{display:flex;justify-content:space-between;align-items:center;padding:4px 3px 14px;border-bottom:1px solid var(--line);font-weight:800}
+.pill{font-size:.72rem;background:#e9f8f2;color:#087653;padding:5px 9px;border-radius:99px}
+.searchmock{margin:16px 0;background:#f3f6fa;padding:12px;border-radius:10px;color:#7b8999;font-size:.86rem}
+.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mini{border:1px solid var(--line);border-radius:12px;padding:13px}.emoji{font-size:1.45rem}.mini b{display:block;font-size:.88rem;margin-top:6px}.mini small{color:var(--muted)}
+section{padding:62px 0}.section-head{text-align:center;max-width:650px;margin:0 auto 30px}.section-head h2{font-size:2rem;letter-spacing:-.8px;margin:0 0 8px}.section-head p{color:var(--muted);margin:0}
+.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.category{background:white;border:1px solid var(--line);border-radius:15px;padding:20px;text-align:left;cursor:pointer;transition:.2s}
+.category:hover,.category.active{border-color:#8bb4ff;box-shadow:0 8px 25px #1d4ed80d;transform:translateY(-2px)}
+.category .emoji{display:block;margin-bottom:10px}.category strong{display:block}.category span:last-child{font-size:.82rem;color:var(--muted)}
+.listing-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:18px}.listing-head h2{margin:0;font-size:1.8rem}.listing-head p{margin:5px 0 0;color:var(--muted)}
+.listings{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.business{background:white;border:1px solid var(--line);border-radius:16px;padding:18px}
+.business-icon{height:46px;width:46px;display:grid;place-items:center;background:var(--sky);border-radius:13px;font-size:1.4rem}
+.business h3{margin:13px 0 4px;font-size:1.05rem}.business p{margin:0;color:var(--muted);font-size:.9rem}.tag{display:inline-block;margin-top:14px;font-size:.75rem;color:#315b9b;background:#eef4ff;padding:5px 9px;border-radius:99px}
+.empty{grid-column:1/-1;background:white;border:1px dashed #cbd5e1;padding:25px;border-radius:14px;color:var(--muted);text-align:center}
+.cta{background:#eaf2ff;border:1px solid #d7e6ff;border-radius:20px;padding:34px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.cta h2{margin:0 0 6px;font-size:1.65rem}.cta p{margin:0;color:var(--muted)}
+footer{background:var(--navy);color:#d5e3f2;padding:30px 0;margin-top:62px}.foot{display:flex;justify-content:space-between;gap:20px;align-items:center}.foot small{color:#a9bed2}
+.modal-backdrop{display:none;position:fixed;inset:0;background:#07192e99;z-index:10;align-items:center;justify-content:center;padding:18px}.modal-backdrop.show{display:flex}
+.modal{background:white;border-radius:18px;padding:25px;width:min(460px,100%);color:var(--ink)}
+.modal h2{margin:0 0 6px}.modal p{color:var(--muted);margin:0 0 18px;font-size:.92rem}
+label{display:block;font-weight:700;font-size:.86rem;margin:12px 0 5px}input,select,textarea{width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:9px;font:inherit;background:white}
+.form-actions{display:flex;gap:10px;margin-top:18px}.form-actions button{flex:1}
+.notice{font-size:.78rem;color:var(--muted);margin-top:12px}
+@media(max-width:760px){.navlinks{display:none}.hero{padding:55px 0}.hero-grid{grid-template-columns:1fr}.preview{max-width:470px}.categories{grid-template-columns:repeat(2,1fr)}.listings{grid-template-columns:1fr}.cta,.foot{align-items:flex-start;flex-direction:column}.listing-head{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><a class="logo" href="#"><span class="mark">B</span>BizWorld</a><nav class="navlinks"><a href="#explore">Explore</a><a href="#businesses">Businesses</a><a href="#about">About</a></nav><button class="btn btn-primary" onclick="openModal()">List your business</button></div></header>
+<main>
+<section class="hero"><div class="wrap hero-grid"><div><span class="eyebrow">A smarter way to get your business noticed</span><h1>Get discovered.<br>Grow together.</h1><p>BizWorld helps people discover businesses, products and services — while giving business owners a simple place to showcase what they do.</p><div class="hero-actions"><a class="btn btn-primary" href="#explore">Explore businesses</a><button class="btn btn-outline" onclick="openModal()">Add your business</button></div><div class="hero-note">The first version of BizWorld — built to help local businesses get seen.</div></div><div class="preview" aria-label="Preview of the BizWorld business directory"><div class="preview-top"><span>Explore BizWorld</span><span class="pill">Business directory</span></div><div class="searchmock">⌕ &nbsp; Search shops, services and more...</div><div class="mini-grid"><div class="mini"><span class="emoji">🍽️</span><b>Food & cafés</b><small>Find places to eat</small></div><div class="mini"><span class="emoji">🛍️</span><b>Shopping</b><small>Discover local stores</small></div><div class="mini"><span class="emoji">🛠️</span><b>Home services</b><small>Find trusted help</small></div><div class="mini"><span class="emoji">💻</span><b>Digital services</b><small>Meet skilled people</small></div></div></div></div></section>
+<section id="explore"><div class="wrap"><div class="section-head"><h2>What are you looking for?</h2><p>Explore business categories and find the services you need.</p></div><div class="categories"><button class="category active" data-filter="All"><span class="emoji">🌍</span><strong>All businesses</strong><span>Browse everything</span></button><button class="category" data-filter="Food"><span class="emoji">🍽️</span><strong>Food & cafés</strong><span>Restaurants and cafés</span></button><button class="category" data-filter="Shopping"><span class="emoji">🛍️</span><strong>Shopping</strong><span>Shops and products</span></button><button class="category" data-filter="Services"><span class="emoji">🛠️</span><strong>Services</strong><span>Local professionals</span></button></div></div></section>
+<section id="businesses" style="padding-top:10px"><div class="wrap"><div class="listing-head"><div><h2>Discover businesses</h2><p>Sample listings to show how the directory will work.</p></div><button class="btn btn-outline" onclick="openModal()">Add a listing</button></div><div class="listings" id="listingGrid"><article class="business" data-category="Food"><div class="business-icon">☕</div><h3>Example Coffee House</h3><p>A sample café listing. Replace this with a real business.</p><span class="tag">Food & cafés · Demo</span></article><article class="business" data-category="Shopping"><div class="business-icon">👕</div><h3>Example Fashion Store</h3><p>A sample shop listing. Replace this with a real business.</p><span class="tag">Shopping · Demo</span></article><article class="business" data-category="Services"><div class="business-icon">🔧</div><h3>Example Repair Service</h3><p>A sample service listing. Replace this with a real business.</p><span class="tag">Services · Demo</span></article></div></div></section>
+<section id="about"><div class="wrap"><div class="cta"><div><h2>Own a business? Let people find you.</h2><p>Create a listing and start showing customers what you offer.</p></div><button class="btn btn-primary" onclick="openModal()">List your business</button></div></div></section>
+</main>
+<footer><div class="wrap foot"><div class="logo" style="color:white"><span class="mark">B</span>BizWorld</div><small>Get discovered. Grow together. &nbsp; · &nbsp; Early prototype</small></div></footer>
+<div class="modal-backdrop" id="modal"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><h2 id="modalTitle">List your business</h2><p>This demo form shows the information BizWorld will collect. It does not send or save submissions yet.</p><form id="businessForm"><label for="businessName">Business name</label><input id="businessName" required placeholder="e.g. Sunrise Bakery"><label for="businessType">Category</label><select id="businessType"><option>Food</option><option>Shopping</option><option>Services</option></select><label for="businessDescription">What do you offer?</label><textarea id="businessDescription" rows="3" placeholder="Describe your products or services"></textarea><label for="businessContact">Contact method (optional)</label><input id="businessContact" placeholder="Phone, WhatsApp or email"><div class="form-actions"><button type="button" class="btn btn-outline" onclick="closeModal()">Cancel</button><button type="submit" class="btn btn-primary">Preview listing</button></div><div class="notice">Prototype only: no information is uploaded or stored.</div></form></div></div>
+<script>
+const modal=document.getElementById('modal');
+function openModal(){modal.classList.add('show')}
+function closeModal(){modal.classList.remove('show')}
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+document.querySelectorAll('.category').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.category').forEach(b=>b.classList.remove('active'));button.classList.add('active');const filter=button.dataset.filter;document.querySelectorAll('.business').forEach(card=>card.style.display=(filter==='All'||card.dataset.category===filter)?'block':'none')}));
+document.getElementById('businessForm').addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('businessName').value.trim();const type=document.getElementById('businessType').value;const desc=document.getElementById('businessDescription').value.trim()||'Business description to be added.';const contact=document.getElementById('businessContact').value.trim();const card=document.createElement('article');card.className='business';card.dataset.category=type;const icon=type==='Food'?'🍽️':type==='Shopping'?'🛍️':'🛠️';const title=document.createElement('h3');title.textContent=name;const para=document.createElement('p');para.textContent=desc+(contact?' Contact: '+contact:'');const ico=document.createElement('div');ico.className='business-icon';ico.textContent=icon;const tag=document.createElement('span');tag.className='tag';tag.textContent=type+' · Local preview';card.append(ico,title,para,tag);document.getElementById('listingGrid').prepend(card);closeModal();e.target.reset();document.getElementById('businesses').scrollIntoView({behavior:'smooth'})});
+</script>
+</body>
+</html>
